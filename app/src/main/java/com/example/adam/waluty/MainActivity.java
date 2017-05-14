@@ -7,34 +7,39 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.example.adam.waluty.services.FixerClientTask;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-  private ListView mListView;
+    private ListView mListView;
+    private ArrayList<CurrencyModel> currencyList;
+    private CurrencyAdapter adapter;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-    final ArrayList<CurrencyModel> currencyList = new ArrayList<>();
-    CurrencyAdapter adapter = new CurrencyAdapter(this, currencyList);
+        currencyList = new ArrayList<>();
+        adapter = new CurrencyAdapter(this, currencyList);
 
-    mListView = (ListView) findViewById(R.id.currency_list_view);
-    mListView.setAdapter(adapter);
+        mListView = (ListView) findViewById(R.id.currency_list_view);
+        mListView.setAdapter(adapter);
 
-    mListView.setOnItemClickListener(new OnItemClickListener() {
+        mListView.setOnItemClickListener(new OnItemClickListener() {
 
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        CurrencyModel selectedCurrency = currencyList.get(position);
-      }
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CurrencyModel selectedCurrency = currencyList.get(position);
+            }
 
-    });
+        });
 
+        loadList("PLN");
+    }
 
-    CurrencyRefreshList.refresh("PLN", adapter, currencyList);
-  }
-
-
+    private void loadList(String base){
+        new FixerClientTask(adapter, currencyList).execute(base);
+    }
 }
