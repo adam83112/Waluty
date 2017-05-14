@@ -11,9 +11,7 @@ import java.util.List;
  */
 
 public class FixerClientTask extends AsyncTask<String, Integer, ExchangeRatesFromBase> {
-    private Context context;
-    public FixerClientTask(Context context){
-        this.context = context;
+    public FixerClientTask(){
     }
 
     @Override
@@ -23,8 +21,8 @@ public class FixerClientTask extends AsyncTask<String, Integer, ExchangeRatesFro
         return exchangeRatesFromBase;
     }
 
-    @Override
-    protected void onPostExecute(ExchangeRatesFromBase result) {
-        Toast.makeText(context, "Obliczono!", Toast.LENGTH_LONG).show();
-    }
+//    @Override
+//    protected void onPostExecute(ExchangeRatesFromBase result) {
+//        //Toast.makeText(context, "Obliczono!", Toast.LENGTH_LONG).show();
+//    }
 }

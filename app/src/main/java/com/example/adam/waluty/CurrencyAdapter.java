@@ -12,10 +12,10 @@ import java.util.ArrayList;
 public class CurrencyAdapter extends BaseAdapter {
     private Context mContext;
   private LayoutInflater mInflater;
-  private ArrayList<Currency> mDataSource;
+  private ArrayList<CurrencyModel> mDataSource;
 
 
-  public CurrencyAdapter(Context context, ArrayList<Currency> items) {
+  public CurrencyAdapter(Context context, ArrayList<CurrencyModel> items) {
     mContext = context;
     mDataSource = items;
     mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -86,7 +86,7 @@ public class CurrencyAdapter extends BaseAdapter {
     ImageView thumbnailImageView = holder.thumbnailImageView;
 
     //Get corresponding currency for row
-    Currency currency = (Currency) getItem(position);
+    CurrencyModel currency = (CurrencyModel) getItem(position);
 
     // Update row view's textviews to display currency information
     titleTextView.setText(currency.name);

@@ -4,7 +4,7 @@ package com.example.adam.waluty;
  * Created by adam on 06.05.17.
  */
 
-public enum CurrencyCodes {
+public enum CurrencyCodesEnum {
     AED("United Arab Emirates Dirham", R.drawable.united_arab_emirates),
     AFN("Afghanistan Afghani", R.drawable.afghanistan),
     ALL("Albania Lek", R.drawable.albania),
@@ -171,12 +171,12 @@ public enum CurrencyCodes {
     private String description;
     private int flag;
 
-    CurrencyCodes(String description) {
+    CurrencyCodesEnum(String description) {
         this.description = description;
         flag = R.mipmap.ic_launcher;
     }
 
-    CurrencyCodes(String description, int flag) {
+    CurrencyCodesEnum(String description, int flag) {
         this.description = description;
         this.flag = flag;
     }

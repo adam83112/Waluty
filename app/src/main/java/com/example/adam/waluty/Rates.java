@@ -102,6 +102,9 @@ public class Rates {
     @SerializedName("EUR")
     @Expose
     private Double eUR;
+    @SerializedName("USD")
+    @Expose
+    private Double uSD;
 
     public Double getAUD() {
         return aUD;
@@ -343,12 +346,14 @@ public class Rates {
         this.zAR = zAR;
     }
 
-    public Double getEUR() {
-        return eUR;
-    }
+    public Double getEUR() { return eUR; }
 
     public void setEUR(Double eUR) {
         this.eUR = eUR;
     }
+
+    public Double getUSD() { return uSD; }
+
+    public void setUSD(Double uSD) { this.uSD = uSD; }
 
 }
