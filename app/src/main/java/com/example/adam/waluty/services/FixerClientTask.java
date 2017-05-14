@@ -1,10 +1,6 @@
 package com.example.adam.waluty.services;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
-
-import java.util.List;
 
 /**
  * Created by adam on 13.05.17.
@@ -17,7 +13,7 @@ public class FixerClientTask extends AsyncTask<String, Integer, ExchangeRatesFro
     @Override
     protected ExchangeRatesFromBase doInBackground(String... params) {
         FixerClient fixerClient = new FixerClient();
-        ExchangeRatesFromBase exchangeRatesFromBase = fixerClient.GetAllExchanges(params[0]);
+        ExchangeRatesFromBase exchangeRatesFromBase = fixerClient.GetByDateAllExchanges(params[0], params[1]);
         return exchangeRatesFromBase;
     }
 

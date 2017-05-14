@@ -5,7 +5,9 @@ package com.example.adam.waluty;
  */
 
 public class CurrencyModel {
-    public String name;
-    public int image;
+    public int countryName;
+    public int currencyName;
+    public int flag_image;
+    public int change_image;
     public String exchangeRate;
 }

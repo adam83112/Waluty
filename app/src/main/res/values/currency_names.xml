@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="australia_currency_name">Dollar</string>
+    <string name="bulgaria_currency_name">Lev</string>
+    <string name="brazil_currency_name">Real</string>
+    <string name="canada_currency_name">Dollar</string>
+    <string name="switzerland_currency_name">Franc</string>
+    <string name="china_currency_name">Renminbi</string>china
+    <string name="czech_republic_currency_name">Koruna</string>
+    <string name="denmark_currency_name">Krone</string>
+    <string name="european_union_currency_name">Euro</string>
+    <string name="united_kingdom_currency_name">Pound</string>
+    <string name="hong_kong_currency_name">Dollar</string>
+    <string name="croatia_currency_name">Kuna</string>
+    <string name="hungary_currency_name">Forint</string>
+    <string name="indonesia_currency_name">Rupiah</string>
+    <string name="israel_currency_name">Shekel</string>
+    <string name="india_currency_name">Rupee</string>
+    <string name="japan_currency_name">Yen</string>
+    <string name="south_korea_currency_name">Won</string>
+    <string name="mexico_currency_name">Peso</string>
+    <string name="malasya_currency_name">Ringgit</string>
+    <string name="norway_currency_name">Krone</string>
+    <string name="new_zealand_currency_name">Dollar</string>
+    <string name="philippines_currency_name">Peso</string>
+    <string name="poland_currency_name">Zloty</string>poland
+    <string name="romania_currency_name">New Leu</string>
+    <string name="russia_currency_name">Ruble</string>
+    <string name="sweden_currency_name">Krona</string>
+    <string name="singapore_currency_name">Dollar</string>
+    <string name="thailand_currency_name">Baht</string>
+    <string name="turkey_currency_name">Lira</string>
+    <string name="united_states_currency_name">Dollar</string>
+    <string name="south_africa_currency_name">Rand</string>
+</resources>

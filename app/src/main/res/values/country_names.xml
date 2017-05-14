@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="australia_country_name">Australia</string>
+    <string name="bulgaria_country_name">Bulgaria</string>
+    <string name="brazil_country_name">Brazil</string>
+    <string name="canada_country_name">Canada</string>
+    <string name="switzerland_country_name">Switzerland</string>
+    <string name="china_country_name">China</string>
+    <string name="czech_republic_country_name">Czech Republic</string>
+    <string name="denmark_country_name">Denmark</string>
+    <string name="european_union_country_name">Eurozone</string>
+    <string name="united_kingdom_country_name">United Kingdom</string>
+    <string name="hong_kong_country_name">Hong Kong</string>
+    <string name="croatia_country_name">Croatia</string>
+    <string name="hungary_country_name">Hungary</string>
+    <string name="indonesia_country_name">Indonesia</string>
+    <string name="israel_country_name">Israel</string>
+    <string name="india_country_name">India</string>
+    <string name="japan_country_name">Japan</string>
+    <string name="south_korea_country_name">South Korea</string>
+    <string name="mexico_country_name">Mexico</string>
+    <string name="malasya_country_name">Malaysia</string>
+    <string name="norway_country_name">Norway</string>
+    <string name="new_zealand_country_name">New Zealand</string>
+    <string name="philippines_country_name">Philippines</string>
+    <string name="poland_country_name">Poland</string>
+    <string name="romania_country_name">Romania</string>
+    <string name="russia_country_name">Russia</string>
+    <string name="sweden_country_name">Sweden</string>
+    <string name="singapore_country_name">Singapore</string>
+    <string name="thailand_country_name">Thailand</string>
+    <string name="turkey_country_name">Turkey</string>
+    <string name="united_states_country_name">United States</string>
+    <string name="south_africa_country_name">South Africa</string>
+</resources>

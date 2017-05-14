@@ -1,52 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:weightSum="100">
 
   <ImageView
-      android:id="@+id/currency_list_thumbnail"
-      android:layout_width="90dp"
-      android:layout_height="90dp"
-      android:layout_alignParentStart="true"
-      android:layout_centerVertical="true"
+      android:id="@+id/currency_flag"
+      android:layout_width="0dp"
+      android:layout_weight="25"
+      android:layout_height="70dp"
+      android:layout_alignParentLeft="true"
       android:layout_marginBottom="6dp"
       android:layout_marginStart="4dp"
       android:layout_marginTop="6dp"
       android:scaleType="centerInside"
-      tools:src="@mipmap/ic_launcher"
-      android:contentDescription="@string/thumbnail"/>
-
-  <TextView
-      android:id="@+id/currency_list_detail"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentEnd="true"
       android:layout_centerVertical="true"
-      android:layout_marginEnd="2dp"
-      android:layout_marginStart="4dp"
-      android:maxLines="1"
-      android:textColor="#000000"
-      android:textSize="12sp"
-      tools:text="Detail"
-      />
+      tools:src="@drawable/united_states"/>
+
+    <LinearLayout
+        android:id="@+id/names"
+        android:layout_width="0dp"
+        android:layout_weight="40"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/currency_flag"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+        <TextView
+            android:id="@+id/country_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textSize="18sp"
+            android:textColor="@color/colorBalanced"
+            tools:text="Country"
+            />
+
+        <TextView
+            android:id="@+id/currency_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textSize="24sp"
+            tools:text="Currency"
+            android:textColor="@color/colorPrimary"
+            android:layout_toEndOf="@+id/country_name"
+            />
+    </LinearLayout>
 
   <RelativeLayout
-      android:id="@+id/currency_list_text_layout"
-      android:layout_width="wrap_content"
+      android:layout_width="0dp"
+      android:layout_weight="35"
       android:layout_height="wrap_content"
-      android:layout_centerVertical="true"
-      android:layout_toEndOf="@id/currency_list_thumbnail"
-      android:layout_toStartOf="@id/currency_list_detail">
+      android:gravity="center_vertical"
+      android:layout_alignParentRight="true"
+      android:layout_centerVertical="true">
+    <ImageView
+        android:id="@+id/currency_change"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="0dp"
+        android:layout_alignParentLeft="true"
+        android:scaleType="centerInside"
+        tools:src="@drawable/trending_up"/>
 
     <TextView
-        android:id="@+id/currency_list_title"
+        android:id="@+id/currency_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:textSize="18sp"
-        tools:text="Title"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="6dp"
+        android:maxLines="1"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:layout_alignParentRight="true"
+        tools:text="Rate"
         />
   </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

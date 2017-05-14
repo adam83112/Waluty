@@ -1,10 +1,8 @@
 package com.example.adam.waluty.services;
 
 import java.io.IOException;
-import java.util.List;
 
 import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -30,8 +28,18 @@ public class FixerClient {
         service = retrofit.create(FixerService.class);
     }
 
-    public ExchangeRatesFromBase GetAllExchanges(String base){
-        Call<ExchangeRatesFromBase> call = service.getAllExchangesForBase(base);
+    public ExchangeRatesFromBase GetLatestAllExchanges(String base){
+        Call<ExchangeRatesFromBase> call = service.getLatestAllExchangesForBase(base);
+        try {
+            return call.execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ExchangeRatesFromBase GetByDateAllExchanges(String date, String base){
+        Call<ExchangeRatesFromBase> call = service.getByDateAllExchangesForBase(date, base);
         try {
             return call.execute().body();
         } catch (IOException e) {
