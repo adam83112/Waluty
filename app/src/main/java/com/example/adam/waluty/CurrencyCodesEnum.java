@@ -22,7 +22,7 @@ public enum CurrencyCodesEnum {
     ILS(R.drawable.israel, R.string.israel_country_name, R.string.israel_currency_name),
     INR(R.drawable.india, R.string.india_country_name, R.string.india_currency_name),
     JPY(R.drawable.japan, R.string.japan_country_name, R.string.japan_currency_name),
-    KRW(R.drawable. south_korea, R.string.south_korea_country_name, R.string.south_korea_currency_name),
+    KRW(R.drawable.south_korea, R.string.south_korea_country_name, R.string.south_korea_currency_name),
     MXN(R.drawable.mexico, R.string.mexico_country_name, R.string.mexico_currency_name),
     MYR(R.drawable.malasya, R.string.malasya_country_name, R.string.malasya_currency_name),
     NOK(R.drawable.norway, R.string.norway_country_name, R.string.norway_currency_name),
