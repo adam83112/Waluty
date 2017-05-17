@@ -1,6 +1,9 @@
 package com.example.adam.waluty;
 
 
+import com.example.adam.waluty.services.FixerClient;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -10,6 +13,11 @@ import java.util.GregorianCalendar;
  */
 
 public class DateHelpers {
+    public static String dateToString(Date date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(date);
+    }
+
     public static Date addDays(Date d, int days) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(d);

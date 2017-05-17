@@ -1,11 +1,13 @@
 package com.example.adam.waluty;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.adam.waluty.services.FixerClientTask;
 
@@ -32,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CurrencyModel selectedCurrency = currencyList.get(position);
+                Context context = view.getContext();
+                String countryName = context.getString(selectedCurrency.currencyName);
+                Toast.makeText(context, countryName, Toast.LENGTH_SHORT).show();
             }
 
         });

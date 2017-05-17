@@ -30,13 +30,9 @@ public class FixerClientTask extends AsyncTask<String, Integer, ArrayList<Curren
         Calendar cal = Calendar.getInstance();
         Date lastWorkingDay = DateHelpers.lastWorkingDay(cal.getTime());
         Date previousWorkingDay = DateHelpers.lastWorkingDay(DateHelpers.addDays(lastWorkingDay, -1));
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-        FixerClient fixerClient = new FixerClient();
-        String formattedLastWorkingDay = dateFormat.format(lastWorkingDay);
-        ExchangeRatesFromBase todayRates = fixerClient.GetByDateAllExchanges(formattedLastWorkingDay, params[0]);
-        String formattedPreviousWorkingDay = dateFormat.format(previousWorkingDay);
-        ExchangeRatesFromBase previousRates = fixerClient.GetByDateAllExchanges(formattedPreviousWorkingDay, params[0]);
+        
+        ExchangeRatesFromBase todayRates = FixerWrapper.GetByDateAllExchanges(lastWorkingDay, params[0]);
+        ExchangeRatesFromBase previousRates = FixerWrapper.GetByDateAllExchanges(previousWorkingDay, params[0]);
 
         return CreateCurrencyModelList.getList(todayRates, previousRates);
     }
