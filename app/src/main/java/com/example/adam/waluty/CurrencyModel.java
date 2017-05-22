@@ -5,9 +5,43 @@ package com.example.adam.waluty;
  */
 
 public class CurrencyModel {
-    public int countryName;
-    public int currencyName;
-    public int flag_image;
-    public int change_image;
-    public String exchangeRate;
+    private int countryName;
+    private int currencyName;
+    private int flagImage;
+    private int changeImage;
+    private String exchangeRate;
+
+    CurrencyModel(CurrencyCodesEnum currency){
+        this.countryName = currency.getCountryName();
+        this.currencyName = currency.getCurrencyName();
+        this.flagImage = currency.getFlag();
+    }
+
+    public int getCountryName() {
+        return countryName;
+    }
+
+    public int getCurrencyName() {
+        return currencyName;
+    }
+
+    public int getFlagImage() {
+        return flagImage;
+    }
+
+    public int getChangeImage() {
+        return changeImage;
+    }
+
+    public void setChangeImage(int changeImage) {
+        this.changeImage = changeImage;
+    }
+
+    public String getExchangeRate() {
+        return exchangeRate;
+    }
+
+    public void setExchangeRate(String exchangeRate) {
+        this.exchangeRate = exchangeRate;
+    }
 }

@@ -7,7 +7,6 @@ import com.example.adam.waluty.CurrencyAdapter;
 import com.example.adam.waluty.CurrencyModel;
 import com.example.adam.waluty.DateHelpers;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;

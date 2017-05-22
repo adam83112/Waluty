@@ -4,9 +4,13 @@ package com.example.adam.waluty.services;
  * Created by adam on 13.05.17.
  */
 
-import com.example.adam.waluty.Rates;
+import com.example.adam.waluty.CurrencyCodesEnum;
+import com.example.adam.waluty.DateHelpers;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.Date;
+import java.util.Map;
 
 public class ExchangeRatesFromBase {
 
@@ -18,29 +22,17 @@ public class ExchangeRatesFromBase {
     private String date;
     @SerializedName("rates")
     @Expose
-    private Rates rates;
+    private Map<String,Double> rates;
 
-    public String getBase() {
-        return base;
+    public Double getRate(CurrencyCodesEnum code) {
+        return rates.get(code.name());
     }
 
-    public void setBase(String base) {
-        this.base = base;
+    public CurrencyCodesEnum getBase() {
+        return CurrencyCodesEnum.valueOf(base);
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public Rates getRates() {
-        return rates;
-    }
-
-    public void setRates(Rates rates) {
-        this.rates = rates;
+    public Date getDate() {
+        return DateHelpers.stringToDate(date);
     }
 }

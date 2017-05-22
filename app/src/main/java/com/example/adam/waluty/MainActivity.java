@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CurrencyModel selectedCurrency = currencyList.get(position);
                 Context context = view.getContext();
-                String countryName = context.getString(selectedCurrency.currencyName);
+                String countryName = context.getString(selectedCurrency.getCountryName());
                 Toast.makeText(context, countryName, Toast.LENGTH_SHORT).show();
             }
 

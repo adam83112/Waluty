@@ -93,11 +93,11 @@ public class CurrencyAdapter extends BaseAdapter {
         CurrencyModel currency = (CurrencyModel) getItem(position);
 
         // Update row view's textviews to display currency information
-        countryNameTextView.setText(mContext.getString(currency.countryName));
-        currencyNameTextView.setText(mContext.getString(currency.currencyName));
-        exchangeRateTextView.setText(currency.exchangeRate);
-        flagImageView.setImageResource(currency.flag_image);
-        changeImageView.setImageResource(currency.change_image);
+        countryNameTextView.setText(mContext.getString(currency.getCountryName()));
+        currencyNameTextView.setText(mContext.getString(currency.getCurrencyName()));
+        exchangeRateTextView.setText(currency.getExchangeRate());
+        flagImageView.setImageResource(currency.getFlagImage());
+        changeImageView.setImageResource(currency.getChangeImage());
 
 
         return convertView;
