@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Waluty</string>
-    <string name="thumbnail">thumbnail</string>
+    <string name="select_base_currency">Select base currency:</string>
+    <string name="cancel">Cancel</string>
+    <string name="list">List</string>
+    <string name="chart">Chart</string>
+    <string name="title_activity_chart">ChartActivity</string>
 </resources>

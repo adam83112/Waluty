@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+    <item
+        android:checked="true"
+        android:id="@+id/action_list"
+        android:enabled="true"
+        android:icon="@drawable/trending_up"
+        android:title="@string/list"
+        android:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_chart"
+        android:enabled="true"
+        android:icon="@drawable/trending_up"
+        android:title="@string/chart"
+        android:showAsAction="ifRoom" />
+</menu>

@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.adam.waluty.MainActivity">
+
+  <android.support.design.widget.BottomNavigationView
+      android:id="@+id/bottom_navigation"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:itemBackground="@color/colorPrimary"
+      app:itemIconTint="@color/colorPrimaryDark"
+      app:itemTextColor="@color/colorPrimaryDark"
+      app:menu="@menu/bottom_navigation_main" />
 
   <ListView
       android:id="@+id/currency_list_view"
       android:layout_height="match_parent"
-      android:layout_width="match_parent">
+      android:layout_width="match_parent"
+      android:layout_above="@id/bottom_navigation">
   </ListView>
+
+  <android.support.design.widget.FloatingActionButton
+      android:id="@+id/myFAB"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:backgroundTint="@color/colorBalanced"
+      app:layout_anchor="@id/currency_list_view"
+      app:layout_anchorGravity="bottom|right|end"
+      android:src="@drawable/trending_up"
+      android:layout_margin="10dp"
+      android:clickable="true"
+      android:onClick="changeBaseOnClick"/>
 </RelativeLayout>

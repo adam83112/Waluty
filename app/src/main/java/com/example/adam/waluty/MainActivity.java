@@ -1,17 +1,22 @@
 package com.example.adam.waluty;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.adam.waluty.services.FixerClientTask;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ListView mListView;
@@ -41,10 +46,39 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        loadList("PLN");
+        loadList("USD");
     }
 
-    private void loadList(String base){
+    private void loadList(String base)
+    {
+        setTitle(base);
         new FixerClientTask(adapter, currencyList).execute(base);
+    }
+
+    public void changeBaseOnClick(View view) {
+        AlertDialog.Builder builderSingle = new AlertDialog.Builder(MainActivity.this);
+        builderSingle.setTitle(R.string.select_base_currency);
+
+        List<CurrencyCodesEnum> currencyList = Arrays.asList(CurrencyCodesEnum.values());
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.select_dialog_item);
+        for(CurrencyCodesEnum currency : currencyList){
+            arrayAdapter.add(currency.name());
+        }
+
+        builderSingle.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String strName = arrayAdapter.getItem(which);
+                loadList(strName);
+            }
+        });
+        builderSingle.show();
     }
 }
