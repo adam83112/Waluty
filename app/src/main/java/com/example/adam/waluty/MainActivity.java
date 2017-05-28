@@ -3,6 +3,7 @@ package com.example.adam.waluty;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.adam.waluty.services.FixerClientTask;
 
@@ -19,6 +19,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String FIRST_CURRENCY_MESSAGE = "com.example.adam.waluty.FIRST_CURRENCY";
+    public static final String SECOND_CURRENCY_MESSAGE = "com.example.adam.waluty.SECOND_CURRENCY";
+
+    private String baseCurrency;
     private ListView mListView;
     private ArrayList<CurrencyModel> currencyList;
     private CurrencyAdapter adapter;
@@ -41,7 +45,10 @@ public class MainActivity extends AppCompatActivity {
                 CurrencyModel selectedCurrency = currencyList.get(position);
                 Context context = view.getContext();
                 String countryName = context.getString(selectedCurrency.getCountryName());
-                Toast.makeText(context, countryName, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), ChartActivity.class);
+                intent.putExtra(SECOND_CURRENCY_MESSAGE, countryName);
+                intent.putExtra(FIRST_CURRENCY_MESSAGE, baseCurrency);
+                startActivity(intent);
             }
 
         });
@@ -52,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadList(String base)
     {
         setTitle(base);
+        baseCurrency = base;
         new FixerClientTask(adapter, currencyList).execute(base);
     }
 
