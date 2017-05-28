@@ -24,14 +24,20 @@ public class FixerClientTask extends AsyncTask<String, Integer, ArrayList<Curren
         this.currencyList = currencyList;
     }
 
+    private ExchangeRatesFromBase getPreviousRates(Date date, String base){
+        ExchangeRatesFromBase previousRates;
+        Date previousDate = date;
+        do{
+            previousDate = DateHelpers.addDays(previousDate, -1);
+            previousRates = FixerWrapper.GetByDateAllExchanges(previousDate, base);
+        }while(previousRates.getDate().after(date));
+        return previousRates;
+    }
+
     @Override
     protected ArrayList<CurrencyModel>  doInBackground(String... params) {
-        Calendar cal = Calendar.getInstance();
-        Date lastWorkingDay = DateHelpers.lastWorkingDay(cal.getTime());
-        Date previousWorkingDay = DateHelpers.lastWorkingDay(DateHelpers.addDays(lastWorkingDay, -1));
-
-        ExchangeRatesFromBase todayRates = FixerWrapper.GetByDateAllExchanges(lastWorkingDay, params[0]);
-        ExchangeRatesFromBase previousRates = FixerWrapper.GetByDateAllExchanges(previousWorkingDay, params[0]);
+        ExchangeRatesFromBase todayRates = FixerWrapper.GetLatestAllExchanges(params[0]);
+        ExchangeRatesFromBase previousRates = getPreviousRates(todayRates.getDate(), params[0]);
 
         return CreateCurrencyModelList.getList(todayRates, previousRates);
     }
