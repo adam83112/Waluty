@@ -1,7 +1,6 @@
 package com.example.adam.waluty;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,14 +14,13 @@ import android.widget.ListView;
 import com.example.adam.waluty.services.FixerClientTask;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
     public static final String FIRST_CURRENCY_MESSAGE = "com.example.adam.waluty.FIRST_CURRENCY";
     public static final String SECOND_CURRENCY_MESSAGE = "com.example.adam.waluty.SECOND_CURRENCY";
 
-    private String baseCurrency;
+    private CurrencyCodesEnum baseCurrency;
     private ListView mListView;
     private ArrayList<CurrencyModel> currencyList;
     private CurrencyAdapter adapter;
@@ -37,41 +35,33 @@ public class MainActivity extends AppCompatActivity {
 
         mListView = (ListView) findViewById(R.id.currency_list_view);
         mListView.setAdapter(adapter);
-
         mListView.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CurrencyModel selectedCurrency = currencyList.get(position);
-                Context context = view.getContext();
-                String countryName = context.getString(selectedCurrency.getCountryName());
                 Intent intent = new Intent(view.getContext(), ChartActivity.class);
-                intent.putExtra(SECOND_CURRENCY_MESSAGE, countryName);
                 intent.putExtra(FIRST_CURRENCY_MESSAGE, baseCurrency);
+                intent.putExtra(SECOND_CURRENCY_MESSAGE, selectedCurrency.getCurrencyCodeEnum());
                 startActivity(intent);
             }
 
         });
 
-        loadList("USD");
+        loadList(CurrencyCodesEnum.USD);
     }
 
-    private void loadList(String base)
+    private void loadList(CurrencyCodesEnum currency)
     {
-        setTitle(base);
-        baseCurrency = base;
-        new FixerClientTask(adapter, currencyList).execute(base);
+        setTitle(currency.name());
+        baseCurrency = currency;
+        new FixerClientTask(adapter, currencyList).execute(currency.name());
     }
 
     public void changeBaseOnClick(View view) {
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(MainActivity.this);
         builderSingle.setTitle(R.string.select_base_currency);
-
-        List<CurrencyCodesEnum> currencyList = Arrays.asList(CurrencyCodesEnum.values());
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.select_dialog_item);
-        for(CurrencyCodesEnum currency : currencyList){
-            arrayAdapter.add(currency.name());
-        }
+        final ArrayAdapter<CurrencyCodesEnum> arrayAdapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, CurrencyCodesEnum.values());
 
         builderSingle.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
@@ -83,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
         builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String strName = arrayAdapter.getItem(which);
-                loadList(strName);
+                CurrencyCodesEnum currency = arrayAdapter.getItem(which);
+                loadList(currency);
             }
         });
         builderSingle.show();

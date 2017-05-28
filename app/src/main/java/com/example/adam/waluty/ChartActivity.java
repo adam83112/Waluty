@@ -7,19 +7,26 @@ import android.widget.TextView;
 
 public class ChartActivity extends AppCompatActivity {
 
+    private TextView firstCurrencyTextView;
+    private TextView secondCurrencyTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
 
-        Intent intent = getIntent();
-
-        String firstCurrencyCode = intent.getStringExtra(MainActivity.FIRST_CURRENCY_MESSAGE);
-        TextView firstCurrencyTextView = (TextView) findViewById(R.id.first_currency);
-        firstCurrencyTextView.setText(firstCurrencyCode);
-
-        String secondCurrencyCode = intent.getStringExtra(MainActivity.SECOND_CURRENCY_MESSAGE);
-        TextView secondCurrencyTextView = (TextView) findViewById(R.id.second_currency);
-        secondCurrencyTextView.setText(secondCurrencyCode);
+        firstCurrencyTextView = (TextView) findViewById(R.id.first_currency);
+        secondCurrencyTextView = (TextView) findViewById(R.id.second_currency);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intent = getIntent();
+        CurrencyCodesEnum firstCurrencyCode = (CurrencyCodesEnum) intent.getSerializableExtra(MainActivity.FIRST_CURRENCY_MESSAGE);
+        firstCurrencyTextView.setText(firstCurrencyCode.name());
+        CurrencyCodesEnum secondCurrencyCode = (CurrencyCodesEnum) intent.getSerializableExtra(MainActivity.SECOND_CURRENCY_MESSAGE);
+        secondCurrencyTextView.setText(secondCurrencyCode.name());
+    }
+
 }

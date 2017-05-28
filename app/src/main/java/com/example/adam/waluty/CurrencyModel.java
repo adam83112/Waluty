@@ -5,28 +5,28 @@ package com.example.adam.waluty;
  */
 
 public class CurrencyModel {
-    private int countryName;
-    private int currencyName;
-    private int flagImage;
+    private CurrencyCodesEnum currencyCodeEnum;
     private int changeImage;
     private String exchangeRate;
 
+    public CurrencyCodesEnum getCurrencyCodeEnum() {
+        return currencyCodeEnum;
+    }
+
     CurrencyModel(CurrencyCodesEnum currency){
-        this.countryName = currency.getCountryName();
-        this.currencyName = currency.getCurrencyName();
-        this.flagImage = currency.getFlag();
+        currencyCodeEnum = currency;
     }
 
     public int getCountryName() {
-        return countryName;
+        return currencyCodeEnum.getCountryName();
     }
 
     public int getCurrencyName() {
-        return currencyName;
+        return currencyCodeEnum.getCurrencyName();
     }
 
     public int getFlagImage() {
-        return flagImage;
+        return currencyCodeEnum.getFlag();
     }
 
     public int getChangeImage() {
