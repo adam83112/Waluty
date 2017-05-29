@@ -23,4 +23,15 @@ public class FixerWrapper {
         FixerClient fixerClient = new FixerClient();
         return fixerClient.GetLatestAllExchanges(base);
     }
+
+    public static ExchangeRatesFromBase GetByDateExchange(Date date, String base, String second){
+        FixerClient fixerClient = new FixerClient();
+        String formattedDate = DateHelpers.dateToString(date);
+        return fixerClient.GetByDateExchange(formattedDate, base, second);
+    }
+
+    public static ExchangeRatesFromBase GetLatestExchange(String base, String second){
+        FixerClient fixerClient = new FixerClient();
+        return fixerClient.GetLatestExchange(base, second);
+    }
 }

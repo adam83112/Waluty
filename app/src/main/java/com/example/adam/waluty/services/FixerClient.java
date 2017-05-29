@@ -47,4 +47,24 @@ public class FixerClient {
         }
         return null;
     }
+
+    public ExchangeRatesFromBase GetLatestExchange(String base, String second){
+        Call<ExchangeRatesFromBase> call = service.getLatestExchangeForBase(base, second);
+        try {
+            return call.execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ExchangeRatesFromBase GetByDateExchange(String date, String base, String second){
+        Call<ExchangeRatesFromBase> call = service.getByDateExchangeForBase(date, base, second);
+        try {
+            return call.execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -17,8 +17,14 @@ import retrofit2.http.Query;
 public interface FixerService {
     //http://api.fixer.io/latest?base=USD
     @GET("latest")
-    Call<ExchangeRatesFromBase> getLatestAllExchangesForBase(@Query("base") String code);
+    Call<ExchangeRatesFromBase> getLatestAllExchangesForBase(@Query("base") String base);
 
     @GET("{date}")
-    Call<ExchangeRatesFromBase> getByDateAllExchangesForBase(@Path("date") String date, @Query("base") String code);
+    Call<ExchangeRatesFromBase> getByDateAllExchangesForBase(@Path("date") String date, @Query("base") String base);
+
+    @GET("latest")
+    Call<ExchangeRatesFromBase> getLatestExchangeForBase(@Query("base") String base, @Query("symbols") String symbols);
+
+    @GET("{date}")
+    Call<ExchangeRatesFromBase> getByDateExchangeForBase(@Path("date") String date, @Query("base") String base, @Query("symbols") String symbols);
 }
